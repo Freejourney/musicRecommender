@@ -39,10 +39,11 @@ public class MusicUserBasedRecommender {
         Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
         Recommender cachingRecommender = new CachingRecommender(recommender);
 
-        for (long userID = 0; userID < 100; userID++) {
+        for (long userID = 0; userID <= model.userID; userID++) {
             String userName = model.userIDAndNameMapping.get(userID);
             List<RecommendedItem> recommendations = cachingRecommender.recommend(userID, 5);
             System.out.print("为用户 " + userName + " 推荐音乐:");
+
             for (RecommendedItem recommendation : recommendations) {
                 System.out.print(recommendation.getItemID() + ":" + model.itemIDAndNameMapping.get(recommendation.getItemID()) +
                         m_tracksDetails.get(m_tracksDetails.indexOf(new Track(model.itemIDAndNameMapping.get(recommendation.getItemID())))).toString() + " | ");

@@ -13,11 +13,11 @@ public class MusicFileDataModel extends FileDataModel {
 
     public static Map<String,Long> userNameAndIDMapping = new HashMap<>();
     public static Map<Long,String> userIDAndNameMapping = new HashMap<>();
-    private static long userID = 0;
+    public static long userID = 0;
 
     public static Map<String,Long> itemNameAndIDMapping = new HashMap<>();
     public static Map<Long,String> itemIDAndNameMapping = new HashMap<>();
-    private static long itemID = 0;
+    public static long itemID = 0;
 
     public MusicFileDataModel(File dataFile) throws IOException {
         super(dataFile);
@@ -45,7 +45,7 @@ public class MusicFileDataModel extends FileDataModel {
 
         userNameAndIDMapping.put(value, userID);
         userIDAndNameMapping.put(userID, value);
-        System.out.println("userID: "+userID+"value: "+value);
+//        System.out.println("userID: "+userID+"value: "+value);
         userID++;
         return (userID -1);
     }

@@ -43,7 +43,9 @@ public class utils {
         File file = new File(filename);
         FileLineIterator iterator = new FileLineIterator(file, false);
         String line = iterator.next();
+        line = iterator.next();
         String str = "";
+        long i = 0;
         while (!line.isEmpty()) {
             String[] m = line.split(",");
             int score = calcuScore(m[0]);
@@ -54,22 +56,35 @@ public class utils {
             } else {
                 break;
             }
+            i++;
+            if (i%10000==0) {
+                System.out.println(i);
+                FileOutputStream fos = new FileOutputStream("mfr.csv", true);//保存文件
+                fos.write(str.getBytes());//写入文件
+                str = "";
+                fos.close();
+            }
         }
         Closeables.close(iterator, true);
 
-        FileOutputStream fos = new FileOutputStream("mfr.csv");//保存文件
+        FileOutputStream fos = new FileOutputStream("mfr.csv", true);//保存文件
         fos.write(str.getBytes());//写入文件
         fos.close();
     }
 
     public int calcuScore(String trackid) {
-        return (int)(base_score + n * m_tracksDetails.get(m_tracksDetails.indexOf(new Track(trackid))).getFavoriates());
+        int index = m_tracksDetails.indexOf(new Track(trackid));
+        if (index == -1) {
+            index = 0;
+        }
+        return (int)(base_score + n * m_tracksDetails.get(index).getFavoriates());
     }
 
     public static void main(String[] args) throws IOException {
         utils util = new utils();
         util.initData("m_t.csv");
-        util.generatemffile("m_f.csv");
+//        util.generatemffile("m_f.csv");
+        util.generatemffile("meta_favorites.csv");
     }
 
 }
