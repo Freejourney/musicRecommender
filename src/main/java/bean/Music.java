@@ -49,4 +49,14 @@ public class Music {
     public void setFavorites(int favorites) {
         this.favorites = favorites;
     }
+
+    @Override
+    public String toString() {
+        return "Music{" +
+                "trackid='" + trackid + '\'' +
+                ", artist='" + artist + '\'' +
+                ", song='" + song + '\'' +
+                ", favorites=" + favorites +
+                '}';
+    }
 }
