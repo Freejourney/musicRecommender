@@ -1,7 +1,6 @@
 package musicRecommender;
 
-import org.apache.mahout.cf.taste.impl.common.FastByIDMap;
-import org.apache.mahout.cf.taste.impl.common.FastIDSet;
+
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 
 import java.io.File;
@@ -23,17 +22,10 @@ public class MusicFileDataModel extends FileDataModel {
         super(dataFile);
     }
 
-    public MusicFileDataModel(File dataFile, String delimiterRegex) throws IOException {
-        super(dataFile, delimiterRegex);
-    }
-
     public MusicFileDataModel(File dataFile, boolean transpose, long minReloadIntervalMS) throws IOException {
         super(dataFile, transpose, minReloadIntervalMS);
     }
 
-    public MusicFileDataModel(File dataFile, boolean transpose, long minReloadIntervalMS, String delimiterRegex) throws IOException {
-        super(dataFile, transpose, minReloadIntervalMS, delimiterRegex);
-    }
 
 
     @Override

@@ -10,9 +10,9 @@ import java.sql.PreparedStatement;
  */
 public class BaseDao {
 
-    private static final String URL="jdbc:mysql://localhost:3306/music";
+    private static final String URL="jdbc:mysql://119.3.185.217:3306/music";
     private static final String USER="root";
-    private static final String PASSWORD="admin";
+    private static final String PASSWORD="123456";
 
     /**
      * 封装获得连接的方法

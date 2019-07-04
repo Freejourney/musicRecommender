@@ -34,7 +34,7 @@ public class MusicUserBasedRecommender {
 //        ItemSimilarity similarity = new UncenteredCosineSimilarity(model);
         //皮尔逊相似度
         UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-        UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
+        UserNeighborhood neighborhood = new NearestNUserNeighborhood(5, similarity, model);
 
         Recommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
         Recommender cachingRecommender = new CachingRecommender(recommender);

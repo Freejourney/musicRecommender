@@ -19,9 +19,9 @@ public class MusicItemBasedRecommender {
         File file = new File("mfr.csv");
         MusicFileDataModel model = new MusicFileDataModel(file);
 
-        ItemSimilarity similarity = new UncenteredCosineSimilarity(model);
+//        ItemSimilarity similarity = new UncenteredCosineSimilarity(model);
         //皮尔逊相似度
-//        ItemSimilarity similarity = new PearsonCorrelationSimilarity(model);
+        ItemSimilarity similarity = new PearsonCorrelationSimilarity(model);
         ItemBasedRecommender recommender = new GenericItemBasedRecommender(model, similarity);
 
         //多线程批处理

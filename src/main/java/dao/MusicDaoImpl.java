@@ -152,10 +152,12 @@ public class MusicDaoImpl extends BaseDao implements MusicDao {
         line = iterator.next();
         Long i = Long.valueOf(1);
         while (!line.isEmpty()) {
-            String[] m = line.split(",");
-            Music music = new Music(m[0], m[1], m[2], Integer.valueOf(m[3]));
-            musicDaoimpl.save(music);
-            System.out.print(i+++" ");
+            if (i > 4450) {
+                String[] m = line.split(",");
+                Music music = new Music(m[0], m[1], m[2], Integer.valueOf(m[3]));
+                musicDaoimpl.save(music);
+            }System.out.print(i++ + " ");
+            System.out.print(i++ + " ");
             if (iterator.hasNext()) {
                 line = iterator.next();
             } else {
@@ -168,9 +170,10 @@ public class MusicDaoImpl extends BaseDao implements MusicDao {
 
     public static void main(String[] args) throws IOException {
         MusicDaoImpl musicDaoimpl = new MusicDaoImpl();
-        List<Music> musics = musicDaoimpl.saveMostFavorites(200);
-        for (Music music : musics) {
-            System.out.println(music.toString());
-        }
+        musicDaoimpl.save2db(musicDaoimpl);
+//        List<Music> musics = musicDaoimpl.saveMostFavorites(200);
+//        for (Music music : musics) {
+//            System.out.println(music.toString());
+//        }
     }
 }

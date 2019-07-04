@@ -19,6 +19,11 @@ public class utils {
     private double n = 0.3;
 
 
+    /**
+     * 将meta_tracks数据读入m_tracksDetails
+     * @param filename
+     * @throws IOException
+     */
     public void initData(String filename) throws IOException {
         File file = new File(filename);
         FileLineIterator iterator = new FileLineIterator(file, false);
@@ -39,6 +44,12 @@ public class utils {
         Closeables.close(iterator, true);
     }
 
+
+    /**
+     * 根据meta_favorites生成meta_favorites+score文件
+     * @param filename
+     * @throws IOException
+     */
     public void generatemffile(String filename) throws IOException {
         File file = new File(filename);
         FileLineIterator iterator = new FileLineIterator(file, false);
@@ -72,6 +83,11 @@ public class utils {
         fos.close();
     }
 
+    /**
+     * 计算score
+     * @param trackid
+     * @return
+     */
     public int calcuScore(String trackid) {
         int index = m_tracksDetails.indexOf(new Track(trackid));
         if (index == -1) {
